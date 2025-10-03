@@ -6,10 +6,9 @@ import com.example.bsy.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +22,12 @@ public class UserController {
     public ResponseEntity<User> signUp(@RequestBody RegisterRequestDto registerRequestDto){
         User user = userService.register(registerRequestDto);
         return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/find")
+    @Operation(summary = "전 회원 조회")
+    public List<User> finaAllUsers(){
+        return userService.findAllUsers();
     }
 
 

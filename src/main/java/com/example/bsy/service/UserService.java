@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -36,6 +38,10 @@ public class UserService {
 
 
 
+    }
+
+    public List<User> findAllUsers(){
+        return userRepository.findAll();
     }
 
 
