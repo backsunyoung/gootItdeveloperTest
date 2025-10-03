@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,6 +29,12 @@ public class UserController {
     @Operation(summary = "전 회원 조회")
     public List<User> finaAllUsers(){
         return userService.findAllUsers();
+    }
+
+    @GetMapping("find/{email}")
+    @Operation(summary = "특정 이메일의 회원 조회")
+    public Optional<User> findByEmails(@PathVariable(name = "email") String email){
+        return userService.findByEmail(email);
     }
 
 
