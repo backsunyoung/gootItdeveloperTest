@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class CustomExcepiton extends RuntimeException{
+public class CustomException extends RuntimeException{
 
     private final ErrorType errorType;
 }

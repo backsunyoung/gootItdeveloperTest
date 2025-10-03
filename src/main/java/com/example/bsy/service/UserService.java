@@ -2,7 +2,7 @@ package com.example.bsy.service;
 
 import com.example.bsy.dto.RegisterRequestDto;
 import com.example.bsy.entity.User;
-import com.example.bsy.exception.CustomExcepiton;
+import com.example.bsy.exception.CustomException;
 import com.example.bsy.exception.ErrorType;
 import com.example.bsy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class UserService {
 
         if(userRepository.existsByEmail(registerRequestDto.email())){
 
-            throw new CustomExcepiton(ErrorType.EMAIL_EXISTS);
+            throw new CustomException(ErrorType.EMAIL_EXISTS);
 
         }
 
