@@ -6,6 +6,7 @@ import com.example.bsy.exception.CustomException;
 import com.example.bsy.exception.ErrorType;
 import com.example.bsy.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public User register(RegisterRequestDto registerRequestDto){
 
@@ -27,7 +29,7 @@ public class UserService {
         User user = User.builder()
                 .username(registerRequestDto.username())
                 .email(registerRequestDto.email())
-                .password(registerRequestDto.password())
+                .password(passwordEncoder.encode(registerRequestDto.password()))
                 .build();
 
         return userRepository.save(user);
